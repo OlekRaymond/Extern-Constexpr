@@ -8,12 +8,11 @@ extern const int non_constexpr;
 // extern constexpr int constexpr_; // fails to compile
 
 // A extern constexpr function can be forward declared
-#if true
-	extern constexpr int bar();
-#else
-	// But MUST have contexpr correctness
-	extern int bar();
-#endif
+
+extern constexpr int bar();
+// But MUST have contexpr correctness
+// /* or */ extern int bar(); // fails to compile: error: redeclaration ‘constexpr int bar()’ differs in ‘constexpr’ from previous declaration
+
 // But cannot be executed at compile time based solely on the forward declare
 
 int foo() {
