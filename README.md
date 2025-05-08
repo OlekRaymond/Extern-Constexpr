@@ -13,3 +13,8 @@ Expected commands are:
 Testing done on:
 - gcc (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0
 
+## Results/discussion/notes
+- The ability of the constexpr function to be constexpr seems to be similar to that of the regular execution of a forward declared inline function
+  + See [inline specifier](https://en.cppreference.com/w/cpp/language/inline)
+
+
