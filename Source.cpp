@@ -1,9 +1,14 @@
 
 #include "Header.hpp"
 
-
-// definition from `extern const` forward declare in header works
-constexpr int non_constexpr = 1;
+// definition from `extern const` forward declare in header 
+#if _MSC_VER
+    // must have constexpr correctness on msvc
+    const int non_constexpr = 1;
+#else
+    // on gcc can be constexpr (with no warnings)
+    constexpr int non_constexpr = 1;
+#endif
 
 constexpr int constexpr_ = 2; // See header
 
@@ -23,5 +28,5 @@ int main() {
 	// check works as expected
 	static_assert(check());
 	
-	return foo();
+	return foo(); // Must be 3
 }
